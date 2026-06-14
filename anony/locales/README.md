@@ -1,7 +1,7 @@
-<h1 align="center">Available Languages in AnonXMusic</h1>
+<h1 align="center">Available Languages in RoseX_Musicbot</h1>
 
 <p align="center">
-    Below is the list of all available translations for <strong>AnonXMusic</strong>.<br>
+    Below is the list of all available translations for <strong>RoseX_Musicbot</strong>.<br>
     Each contributor has helped make this project accessible to users around the world.
 </p>
 
@@ -27,7 +27,7 @@
         <tr>
             <td>en</td>
             <td>English</td>
-            <td><a href=https://github.com/AnonymousX1025>@AnonymousX1025</a></td>
+            <td><a href=https://github.com/MalikX>@MalikX</a></td>
         </tr>
         <tr>
             <td>es</td>
@@ -85,7 +85,7 @@
 <br>
 
 <p align="center">
-    💡 Want to help improve AnonXMusic?<br>
-    You can translate the strings in the <code>en.json</code> file into your language and send it to <a href=https://DevilsHeavenMF.t.me>@DevilsHeavenMF</a>,<br>
+    💡 Want to help improve RoseX_Musicbot?<br>
+    You can translate the strings in the <code>en.json</code> file into your language and send it to <a href=https://t.me/MalikX_owner>@MalikX_owner</a>,<br>
     or open a pull request to contribute your translation!
 </p>
