@@ -1,6 +1,6 @@
-# Copyright (c) 2025 AnonymousX1025
+# Copyright (c) 2025 MalikX
 # Licensed under the MIT License.
-# This file is part of AnonXMusic
+# This file is part of RoseX_Musicbot
 
 
 from random import randint
@@ -17,7 +17,7 @@ class MongoDB:
         Initialize the MongoDB connection.
         """
         self.mongo = AsyncMongoClient(config.MONGO_URL, serverSelectionTimeoutMS=12500)
-        self.db = self.mongo.Anon
+        self.db = self.mongo.dipagshisharma_db_user
 
         self.admin_list = {}
         self.active_calls = {}
