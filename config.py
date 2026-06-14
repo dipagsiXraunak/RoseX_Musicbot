@@ -1,3 +1,6 @@
+# Copyright (c) 2025 MalikX
+# This file is part of RoseX_Musicbot
+
 from os import getenv
 from dotenv import load_dotenv
 
