@@ -1,3 +1,6 @@
+# Copyright (c) 2025 MalikX
+# This file is part of RoseX_Musicbot
+
 FROM python:3.13-slim
 
 WORKDIR /app
