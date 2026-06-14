@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright (c) 2025 MalikX
+# This file is part of RoseX_Musicbot
 
 set -o pipefail
 
