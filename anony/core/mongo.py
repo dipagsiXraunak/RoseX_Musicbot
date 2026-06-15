@@ -17,7 +17,7 @@ class MongoDB:
         Initialize the MongoDB connection.
         """
         self.mongo = AsyncMongoClient(config.MONGO_URL, serverSelectionTimeoutMS=12500)
-        self.db = self.mongo.dipagshisharma_db_user
+        self.db = self.mongo[config.DB_NAME]
 
         self.admin_list = {}
         self.active_calls = {}
