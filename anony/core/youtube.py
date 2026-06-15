@@ -2,7 +2,6 @@
 # Licensed under the MIT License.
 # This file is part of RoseX_Musicbot
 
-
 import os
 import re
 import yt_dlp
@@ -112,11 +111,12 @@ class YouTube:
 
     async def download(self, video_id: str, video: bool = False) -> str | None:
         url = self.base + video_id
-        ext = "mp4" if video else "webm"
-        filename = f"downloads/{video_id}.{ext}"
 
-        if Path(filename).exists():
-            return filename
+        # Cache check – multiple extensions
+        for ext in (["mp4"] if video else ["webm", "m4a", "opus", "mp4"]):
+            filename = f"downloads/{video_id}.{ext}"
+            if Path(filename).exists():
+                return filename
 
         cookie = self.get_cookies()
         base_opts = {
@@ -127,19 +127,43 @@ class YouTube:
             "no_warnings": True,
             "overwrites": False,
             "nocheckcertificate": True,
-            "cookiefile": cookie,
+            "retries": 5,
+            "fragment_retries": 5,
+            "socket_timeout": 30,
+            "extractor_args": {
+                "youtube": {
+                    "player_client": ["ios", "web"],
+                    # "skip" wali line bilkul mat daalo
+                }
+            },
+            "http_headers": {
+                "User-Agent": (
+                    "com.google.ios.youtube/19.29.1 "
+                    "(iPhone16,2; U; CPU iOS 17_5_1 like Mac OS X)"
+                ),
+            },
         }
 
         if video:
             ydl_opts = {
                 **base_opts,
-                "format": "(bestvideo[height<=?720][width<=?1280][ext=mp4])+(bestaudio)",
+                "format": (
+                    "bestvideo[height<=?720][width<=?1280][ext=mp4]+bestaudio[ext=m4a]"
+                    "/bestvideo[height<=?720]+bestaudio[ext=m4a]"
+                    "/bestvideo+bestaudio"
+                    "/best[ext=mp4]/best"
+                ),
                 "merge_output_format": "mp4",
             }
         else:
             ydl_opts = {
                 **base_opts,
-                "format": "bestaudio[ext=webm][acodec=opus]",
+                "format": (
+                    "bestaudio[ext=m4a]"
+                    "/bestaudio[ext=webm]"
+                    "/bestaudio"
+                    "/best"
+                ),
             }
 
         def _download():
@@ -151,6 +175,14 @@ class YouTube:
                 except Exception as ex:
                     logger.warning("Download failed: %s", ex)
                     return None
-            return filename
+            return None
 
-        return await asyncio.to_thread(_download)
+        await asyncio.to_thread(_download)
+
+        # Post-download scan – find the file with any allowed extension
+        exts = ["mp4"] if video else ["webm", "m4a", "opus", "mp3", "mp4"]
+        for ext in exts:
+            filename = f"downloads/{video_id}.{ext}"
+            if Path(filename).exists():
+                return filename
+        return None
