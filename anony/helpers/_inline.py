@@ -153,7 +153,7 @@ class Inline:
                 [
                     self.ikb(
                         text=lang["owner"],
-                        url="config.OWNER_URL",
+                        url=config.OWNER_URL,
                     )
                 ]
             ]
