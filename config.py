@@ -25,8 +25,8 @@ class Config:
         self.SESSION2 = getenv("SESSION2", None)
         self.SESSION3 = getenv("SESSION3", None)
 
-        self.SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/RoseXupdate")
-        self.SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/roseXsupport")
+        self.SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/+EILbC9UNcLNjZTJk")
+        self.SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+-g8ILICIFgsyMzQ0")
 
         self.AUTO_LEAVE: bool = getenv("AUTO_LEAVE", "False").lower() == "true"
         self.AUTO_END: bool = getenv("AUTO_END", "False").lower() == "true"
@@ -46,7 +46,7 @@ class Config:
 
         # === New variables (as per image) ===
         self.DB_NAME = getenv("DB_NAME", "darklordsaura_db_user")
-        self.OWNER_URL = getenv("OWNER_URL", "https://t.me/MalikX_owner")
+        self.OWNER_URL = getenv("OWNER_URL", "https://t.me/Riskyhater")
 
     def check(self):
         missing = [
